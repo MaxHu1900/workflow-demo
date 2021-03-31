@@ -1,0 +1,23 @@
+name: Select to Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      deploy_env:
+          description: 'Which environment you want to deploy? (dev/test/uat/prod)'
+          required: true      
+      deploy_version:
+          description: 'Which version you want to deploy? (Commit SHA Code)'
+          required: true
+
+jobs:
+  unit-test:
+    runs-on: [ ubuntu-latest ]
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: deploy ${{ github.event.inputs.deploy_version }} to ${{ github.event.inputs.deploy_env }}
+        run: sleep 5s & echo ${{ github.event.inputs.deploy_env }} & echo ${{ github.event.inputs.deploy_version }}
