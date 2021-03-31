@@ -1,9 +1,6 @@
 name: Select to Deploy
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
     inputs:
       deploy_env:
@@ -14,7 +11,7 @@ on:
           required: true
 
 jobs:
-  unit-test:
+  deployment:
     runs-on: [ ubuntu-latest ]
     steps:
       - uses: actions/checkout@v2
