@@ -1,4 +1,4 @@
-name: Select to Deploy
+name: Select ${{ github.event.inputs.deploy_version }} to Deploy on ${{ github.event.inputs.deploy_env }}
 
 on:
   workflow_dispatch:
